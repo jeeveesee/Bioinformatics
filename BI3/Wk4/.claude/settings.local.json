@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python Wk4_3_Chromo2Cycle.py)",
+      "Bash(python Wk4_7_2BreakOnGenomeGraph.py)"
+    ]
+  }
+}

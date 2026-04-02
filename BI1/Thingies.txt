@@ -1,0 +1,12 @@
+Bioinformatics 1:
+Coursera
+******************
+
+- oriC or origin of replication
+- DnaA
+- DnaA Box
+
+How does the bacterial cell know to begin replication exactly in this short region within the much larger Vibrio cholerae chromosome, which consists of 1,108,250 nucleotides? There must be some “hidden message” in the ori region ordering the cell to begin replication here. Indeed, we know that the initiation of replication is mediated by DnaA, a protein that binds to a short segment within the ori known as a DnaA box. You can think of the DnaA box as a message within the DNA sequence telling the DnaA protein: “bind here!” The question is how to find this hidden message without knowing what it looks like in advance—can you find it?
+
+
+

@@ -1,0 +1,161 @@
+Nodes: 6
+Edges: 5 0
+graph: {'0': ['1'], '1': ['2', '6'], '2': ['6'], '3': ['1', '5'], '4': ['3'], '5': ['3', '4'], '6': ['5', '0']}
+Starting Node: 0
+Is it an integer?: False
+Is it an alpha?: True
+
+
+CURRENT CURRENT NODE: 0
+Graph[current_node]: ['1']
+NOT Graph[current_node]: False
+Stack: ['0']
+Next Node, whcih will be current node: 1
+
+
+CURRENT CURRENT NODE: 1
+Graph[current_node]: ['2', '6']
+NOT Graph[current_node]: False
+Stack: ['0', '1']
+Next Node, whcih will be current node: 6
+
+
+CURRENT CURRENT NODE: 6
+Graph[current_node]: ['5', '0']
+NOT Graph[current_node]: False
+Stack: ['0', '1', '6']
+Next Node, whcih will be current node: 0
+
+
+CURRENT CURRENT NODE: 0
+Graph[current_node]: []
+NOT Graph[current_node]: True
+Cycle is: ['0']
+Current Node: 6
+
+
+CURRENT CURRENT NODE: 6
+Graph[current_node]: ['5']
+NOT Graph[current_node]: False
+Stack: ['0', '1', '6']
+Next Node, whcih will be current node: 5
+
+
+CURRENT CURRENT NODE: 5
+Graph[current_node]: ['3', '4']
+NOT Graph[current_node]: False
+Stack: ['0', '1', '6', '5']
+Next Node, whcih will be current node: 4
+
+
+CURRENT CURRENT NODE: 4
+Graph[current_node]: ['3']
+NOT Graph[current_node]: False
+Stack: ['0', '1', '6', '5', '4']
+Next Node, whcih will be current node: 3
+
+
+CURRENT CURRENT NODE: 3
+Graph[current_node]: ['1', '5']
+NOT Graph[current_node]: False
+Stack: ['0', '1', '6', '5', '4', '3']
+Next Node, whcih will be current node: 5
+
+
+CURRENT CURRENT NODE: 5
+Graph[current_node]: ['3']
+NOT Graph[current_node]: False
+Stack: ['0', '1', '6', '5', '4', '3', '5']
+Next Node, whcih will be current node: 3
+
+
+CURRENT CURRENT NODE: 3
+Graph[current_node]: ['1']
+NOT Graph[current_node]: False
+Stack: ['0', '1', '6', '5', '4', '3', '5', '3']
+Next Node, whcih will be current node: 1
+
+
+CURRENT CURRENT NODE: 1
+Graph[current_node]: ['2']
+NOT Graph[current_node]: False
+Stack: ['0', '1', '6', '5', '4', '3', '5', '3', '1']
+Next Node, whcih will be current node: 2
+
+
+CURRENT CURRENT NODE: 2
+Graph[current_node]: ['6']
+NOT Graph[current_node]: False
+Stack: ['0', '1', '6', '5', '4', '3', '5', '3', '1', '2']
+Next Node, whcih will be current node: 6
+
+
+CURRENT CURRENT NODE: 6
+Graph[current_node]: []
+NOT Graph[current_node]: True
+Cycle is: ['0', '6']
+Current Node: 2
+
+
+CURRENT CURRENT NODE: 2
+Graph[current_node]: []
+NOT Graph[current_node]: True
+Cycle is: ['0', '6', '2']
+Current Node: 1
+
+
+CURRENT CURRENT NODE: 1
+Graph[current_node]: []
+NOT Graph[current_node]: True
+Cycle is: ['0', '6', '2', '1']
+Current Node: 3
+
+
+CURRENT CURRENT NODE: 3
+Graph[current_node]: []
+NOT Graph[current_node]: True
+Cycle is: ['0', '6', '2', '1', '3']
+Current Node: 5
+
+
+CURRENT CURRENT NODE: 5
+Graph[current_node]: []
+NOT Graph[current_node]: True
+Cycle is: ['0', '6', '2', '1', '3', '5']
+Current Node: 3
+
+
+CURRENT CURRENT NODE: 3
+Graph[current_node]: []
+NOT Graph[current_node]: True
+Cycle is: ['0', '6', '2', '1', '3', '5', '3']
+Current Node: 4
+
+
+CURRENT CURRENT NODE: 4
+Graph[current_node]: []
+NOT Graph[current_node]: True
+Cycle is: ['0', '6', '2', '1', '3', '5', '3', '4']
+Current Node: 5
+
+
+CURRENT CURRENT NODE: 5
+Graph[current_node]: []
+NOT Graph[current_node]: True
+Cycle is: ['0', '6', '2', '1', '3', '5', '3', '4', '5']
+Current Node: 6
+
+
+CURRENT CURRENT NODE: 6
+Graph[current_node]: []
+NOT Graph[current_node]: True
+Cycle is: ['0', '6', '2', '1', '3', '5', '3', '4', '5', '6']
+Current Node: 1
+
+
+CURRENT CURRENT NODE: 1
+Graph[current_node]: []
+NOT Graph[current_node]: True
+Cycle is: ['0', '6', '2', '1', '3', '5', '3', '4', '5', '6', '1']
+Current Node: 0
+0->1->6->5->4->3->5->3->1->2->6->0

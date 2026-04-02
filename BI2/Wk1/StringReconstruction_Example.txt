@@ -1,0 +1,20 @@
+
+AAT  ATG  ATG  ATG  CAT  CCA  GAT  GCC  GGA  GGG  GTT  TAA  TGC  TGG  TGT
+
+TAA
+|AAT
+||ATG
+|||TGC
+||||GCC
+|||||CCA
+||||||CAT
+|||||||ATG
+||||||||TGG
+|||||||||GGG
+||||||||||GGA
+|||||||||||GAT
+||||||||||||ATG
+|||||||||||||TGT
+||||||||||||||GTT
+|||||||||||||||||
+TAATGCCATGGGATGTT

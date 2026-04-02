@@ -1,0 +1,12 @@
+47761
+
+Answer: n*(n-1)
+
+Because
+
+1. You can start at any position, and take 1 AA at a time -- total n count
+2. You can start at any position, and take 2 AA at a time -- total n count
+3. You can start at any position, and take 3 AA at a time -- total n count
+continue until n-1 because at all n you are taking the full cyclical genome
+
+n + n + n + .... + n ---> n-1 times

@@ -1,0 +1,68 @@
+1. If we gave you the de Bruijn graph DeBruijnk(Text) without giving you Text, could you reconstruct Text?
+2. Construct the de Bruijn graphs 
+
+- DeBruijn2(TAATGCCATGGGATGTT)
+
+T: A G G G T
+A: A T T T
+G: C G G A T
+C: C A
+
+- DeBruijn3(TAATGCCATGGGATGTT)
+	
+TA: AA
+AA: AT
+AT: TG TG TG
+TG: GC GG GT
+GC: CC
+CC: CA
+CA: AT
+GG: GG GA
+GA: AT
+GT: TT	
+
+
+- DeBruijn4(TAATGCCATGGGATGTT). What do you notice?
+
+TAA: AAT
+AAT: ATG
+ATG: TGC TGG TGT
+TGC: GCC
+GCC: CCA
+CCA: CAT
+CAT: ATG
+TGG: GGG
+GGG: GGA
+GGA: GAT
+GAT: ATG
+TGT: GTT
+
+
+
+3. How does the graph 
+
+- DeBruijn3(TAATGCCATGGGATGTT) compare to 
+
+TA: AA
+AA: AT
+AT: TG TG TG
+TG: GC GG GT
+GC: CC
+CC: CA
+CA: AT
+GG: GG GA
+GA: AT
+GT: TT
+
+- DeBruijn3(TAATGGGATGCCATGTT)?
+
+TA: AA
+AA: AT
+AT: TG TG TG
+TG: GG GC GT
+GG: GG GA
+GA: AT
+GC: CC
+CC: CA
+CA: AT
+GT: TT

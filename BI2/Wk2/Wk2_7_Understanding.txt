@@ -1,0 +1,284 @@
+src=''
+dst=''
+adj={}
+indeg={}
+outdeg={}
+
+for pair in pairs:
+a, b = pair.split('|')
+src = a[:-1] + '|' + b[:-1]
+dst = a[1:] + '|' + b[1:]
+adj.setdefault(src, []).append(dst)
+outdeg[src] = outdeg.get(src, 0) + 1
+indeg[dst] = indeg.get(dst, 0) + 1
+outdeg.setdefault(dst, outdeg.get(dst, 0))
+indeg.setdefault(src, indeg.get(src, 0))
+print("\n")
+print(f"{pair=}")
+print(f"{src=}")
+print(f"{dst=}")
+print(f"{adj=}")
+print(f"{indeg=}")
+print(f"{outdeg=}")
+
+
+for pair in pairs:
+  a, b = pair.split('|')
+  src = a[:-1] + '|' + b[:-1]
+  dst = a[1:] + '|' + b[1:]
+  adj.setdefault(src, []).append(dst)
+  outdeg[src] = outdeg.get(src, 0) + 1
+  indeg[dst] = indeg.get(dst, 0) + 1
+  outdeg.setdefault(dst, outdeg.get(dst, 0))
+  indeg.setdefault(src, indeg.get(src, 0))
+  print("\n")
+  print(f"{pair=}")
+  print(f"{src=}")
+  print(f"{dst=}")
+  print(f"{adj=}")
+  print(f"{indeg=}")
+  print(f"{outdeg=}")
+
+
+Adjacency Matrix:
+=======================
+{'GAG|TTG': ['AGA|TGA'], 
+ 'TCG|GAT': ['CGT|ATG'], 
+ 'CGT|ATG': ['GTG|TGT'], 
+ 'TGG|TGA': ['GGT|GAG'], 
+ 'GTG|TGT': ['TGA|GTT'], 
+ 'GTG|GTG': ['TGG|TGA'], 
+ 'TGA|GTT': ['GAG|TTG'], 
+ 'GGT|GAG': ['GTC|AGA'], 
+ 'GTC|AGA': ['TCG|GAT']}
+
+Indegree:
+=============
+
+{'AGA|TGA': 1, 
+ 'GAG|TTG': 1, 
+ 'CGT|ATG': 1, 
+ 'TCG|GAT': 1, 
+ 'GTG|TGT': 1, 
+ 'GGT|GAG': 1, 
+ 'TGG|TGA': 1, 
+ 'TGA|GTT': 1, 
+ 'GTG|GTG': 0, 
+ 'GTC|AGA': 1}
+
+Outdeg:
+=============
+
+{'GAG|TTG': 1, 
+ 'AGA|TGA': 0, 
+ 'TCG|GAT': 1, 
+ 'CGT|ATG': 1, 
+ 'GTG|TGT': 1, 
+ 'TGG|TGA': 1, 
+ 'GGT|GAG': 1, 
+ 'TGA|GTT': 1, 
+ 'GTG|GTG': 1, 
+ 'GTC|AGA': 1}
+
+
+
+OUTPUT:
+================
+
+PAIRS = ['GAGA|TTGA', 'TCGT|GATG', 'CGTG|ATGT', 'TGGT|TGAG', 'GTGA|TGTT', 'GTGG|GTGA', 'TGAG|GTTG', 'GGTC|GAGA', 'GTCG|AGAT']
+
+pair='GAGA|TTGA'
+src='GAG|TTG'
+dst='AGA|TGA'
+adj={'GAG|TTG': ['AGA|TGA']}
+indeg={'AGA|TGA': 1, 'GAG|TTG': 0}
+outdeg={'GAG|TTG': 1, 'AGA|TGA': 0}
+0
+0
+
+
+pair='TCGT|GATG'
+src='TCG|GAT'
+dst='CGT|ATG'
+adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': ['CGT|ATG']}
+indeg={'AGA|TGA': 1, 'GAG|TTG': 0, 'CGT|ATG': 1, 'TCG|GAT': 0}
+outdeg={'GAG|TTG': 1, 'AGA|TGA': 0, 'TCG|GAT': 1, 'CGT|ATG': 0}
+0
+1
+
+
+pair='CGTG|ATGT'
+src='CGT|ATG'
+dst='GTG|TGT'
+adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': ['CGT|ATG'], 'CGT|ATG': ['GTG|TGT']}
+indeg={'AGA|TGA': 1, 'GAG|TTG': 0, 'CGT|ATG': 1, 'TCG|GAT': 0, 'GTG|TGT': 1}
+outdeg={'GAG|TTG': 1, 'AGA|TGA': 0, 'TCG|GAT': 1, 'CGT|ATG': 1, 'GTG|TGT': 0}
+0
+0
+
+
+pair='TGGT|TGAG'
+src='TGG|TGA'
+dst='GGT|GAG'
+adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': ['CGT|ATG'], 'CGT|ATG': ['GTG|TGT'], 'TGG|TGA': ['GGT|GAG']}
+indeg={'AGA|TGA': 1, 'GAG|TTG': 0, 'CGT|ATG': 1, 'TCG|GAT': 0, 'GTG|TGT': 1, 'GGT|GAG': 1, 'TGG|TGA': 0}
+outdeg={'GAG|TTG': 1, 'AGA|TGA': 0, 'TCG|GAT': 1, 'CGT|ATG': 1, 'GTG|TGT': 0, 'TGG|TGA': 1, 'GGT|GAG': 0}
+0
+1
+
+
+pair='GTGA|TGTT'
+src='GTG|TGT'
+dst='TGA|GTT'
+adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': ['CGT|ATG'], 'CGT|ATG': ['GTG|TGT'], 'TGG|TGA': ['GGT|GAG'], 'GTG|TGT': ['TGA|GTT']}
+indeg={'AGA|TGA': 1, 'GAG|TTG': 0, 'CGT|ATG': 1, 'TCG|GAT': 0, 'GTG|TGT': 1, 'GGT|GAG': 1, 'TGG|TGA': 0, 'TGA|GTT': 1}
+outdeg={'GAG|TTG': 1, 'AGA|TGA': 0, 'TCG|GAT': 1, 'CGT|ATG': 1, 'GTG|TGT': 1, 'TGG|TGA': 1, 'GGT|GAG': 0, 'TGA|GTT': 0}
+1
+0
+
+
+pair='GTGG|GTGA'
+src='GTG|GTG'
+dst='TGG|TGA'
+adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': ['CGT|ATG'], 'CGT|ATG': ['GTG|TGT'], 'TGG|TGA': ['GGT|GAG'], 'GTG|TGT': ['TGA|GTT'], 'GTG|GTG': ['TGG|TGA']}
+indeg={'AGA|TGA': 1, 'GAG|TTG': 0, 'CGT|ATG': 1, 'TCG|GAT': 0, 'GTG|TGT': 1, 'GGT|GAG': 1, 'TGG|TGA': 1, 'TGA|GTT': 1, 'GTG|GTG': 0}
+outdeg={'GAG|TTG': 1, 'AGA|TGA': 0, 'TCG|GAT': 1, 'CGT|ATG': 1, 'GTG|TGT': 1, 'TGG|TGA': 1, 'GGT|GAG': 0, 'TGA|GTT': 0, 'GTG|GTG': 1}
+1
+1
+
+
+pair='TGAG|GTTG'
+src='TGA|GTT'
+dst='GAG|TTG'
+adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': ['CGT|ATG'], 'CGT|ATG': ['GTG|TGT'], 'TGG|TGA': ['GGT|GAG'], 'GTG|TGT': ['TGA|GTT'], 'GTG|GTG': ['TGG|TGA'], 'TGA|GTT': ['GAG|TTG']}
+indeg={'AGA|TGA': 1, 'GAG|TTG': 1, 'CGT|ATG': 1, 'TCG|GAT': 0, 'GTG|TGT': 1, 'GGT|GAG': 1, 'TGG|TGA': 1, 'TGA|GTT': 1, 'GTG|GTG': 0}
+outdeg={'GAG|TTG': 1, 'AGA|TGA': 0, 'TCG|GAT': 1, 'CGT|ATG': 1, 'GTG|TGT': 1, 'TGG|TGA': 1, 'GGT|GAG': 0, 'TGA|GTT': 1, 'GTG|GTG': 1}
+0
+1
+
+
+pair='GGTC|GAGA'
+src='GGT|GAG'
+dst='GTC|AGA'
+adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': ['CGT|ATG'], 'CGT|ATG': ['GTG|TGT'], 'TGG|TGA': ['GGT|GAG'], 'GTG|TGT': ['TGA|GTT'], 'GTG|GTG': ['TGG|TGA'], 'TGA|GTT': ['GAG|TTG'], 'GGT|GAG': ['GTC|AGA']}
+indeg={'AGA|TGA': 1, 'GAG|TTG': 1, 'CGT|ATG': 1, 'TCG|GAT': 0, 'GTG|TGT': 1, 'GGT|GAG': 1, 'TGG|TGA': 1, 'TGA|GTT': 1, 'GTG|GTG': 0, 'GTC|AGA': 1}
+outdeg={'GAG|TTG': 1, 'AGA|TGA': 0, 'TCG|GAT': 1, 'CGT|ATG': 1, 'GTG|TGT': 1, 'TGG|TGA': 1, 'GGT|GAG': 1, 'TGA|GTT': 1, 'GTG|GTG': 1, 'GTC|AGA': 0}
+1
+1
+
+
+pair='GTCG|AGAT'
+src='GTC|AGA'
+dst='TCG|GAT'
+adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': ['CGT|ATG'], 'CGT|ATG': ['GTG|TGT'], 'TGG|TGA': ['GGT|GAG'], 'GTG|TGT': ['TGA|GTT'], 'GTG|GTG': ['TGG|TGA'], 'TGA|GTT': ['GAG|TTG'], 'GGT|GAG': ['GTC|AGA'], 'GTC|AGA': ['TCG|GAT']}
+indeg={'AGA|TGA': 1, 'GAG|TTG': 1, 'CGT|ATG': 1, 'TCG|GAT': 1, 'GTG|TGT': 1, 'GGT|GAG': 1, 'TGG|TGA': 1, 'TGA|GTT': 1, 'GTG|GTG': 0, 'GTC|AGA': 1}
+outdeg={'GAG|TTG': 1, 'AGA|TGA': 0, 'TCG|GAT': 1, 'CGT|ATG': 1, 'GTG|TGT': 1, 'TGG|TGA': 1, 'GGT|GAG': 1, 'TGA|GTT': 1, 'GTG|GTG': 1, 'GTC|AGA': 1} 
+
+
+
+===================================================
+FINAL OUTPUT:
+===================================================
+
+
+# It starts here because outdedg - indegree = 1, i.e. starting node
+local_adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': ['CGT|ATG'], 'CGT|ATG': ['GTG|TGT'], 'TGG|TGA': ['GGT|GAG'], 'GTG|TGT': ['TGA|GTT'], 'GTG|GTG': ['TGG|TGA'], 'TGA|GTT': ['GAG|TTG'], 'GGT|GAG': ['GTC|AGA'], 'GTC|AGA': ['TCG|GAT']}
+start='GTG|GTG'
+stack=['GTG|GTG']
+
+v='GTG|GTG'
+u='TGG|TGA'
+stack=['GTG|GTG', 'TGG|TGA']
+local_adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': ['CGT|ATG'], 'CGT|ATG': ['GTG|TGT'], 'TGG|TGA': ['GGT|GAG'], 'GTG|TGT': ['TGA|GTT'], 'GTG|GTG': [], 'TGA|GTT': ['GAG|TTG'], 'GGT|GAG': ['GTC|AGA'], 'GTC|AGA': ['TCG|GAT']}   
+
+v='TGG|TGA'
+u='GGT|GAG'
+stack=['GTG|GTG', 'TGG|TGA', 'GGT|GAG']
+local_adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': ['CGT|ATG'], 'CGT|ATG': ['GTG|TGT'], 'TGG|TGA': [], 'GTG|TGT': ['TGA|GTT'], 'GTG|GTG': [], 'TGA|GTT': ['GAG|TTG'], 'GGT|GAG': ['GTC|AGA'], 'GTC|AGA': ['TCG|GAT']}
+
+v='GGT|GAG'
+u='GTC|AGA'
+stack=['GTG|GTG', 'TGG|TGA', 'GGT|GAG', 'GTC|AGA']
+local_adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': ['CGT|ATG'], 'CGT|ATG': ['GTG|TGT'], 'TGG|TGA': [], 'GTG|TGT': ['TGA|GTT'], 'GTG|GTG': [], 'TGA|GTT': ['GAG|TTG'], 'GGT|GAG': [], 'GTC|AGA': ['TCG|GAT']}
+
+v='GTC|AGA'
+u='TCG|GAT'
+stack=['GTG|GTG', 'TGG|TGA', 'GGT|GAG', 'GTC|AGA', 'TCG|GAT']
+local_adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': ['CGT|ATG'], 'CGT|ATG': ['GTG|TGT'], 'TGG|TGA': [], 'GTG|TGT': ['TGA|GTT'], 'GTG|GTG': [], 'TGA|GTT': ['GAG|TTG'], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='TCG|GAT'
+u='CGT|ATG'
+stack=['GTG|GTG', 'TGG|TGA', 'GGT|GAG', 'GTC|AGA', 'TCG|GAT', 'CGT|ATG']
+local_adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': [], 'CGT|ATG': ['GTG|TGT'], 'TGG|TGA': [], 'GTG|TGT': ['TGA|GTT'], 'GTG|GTG': [], 'TGA|GTT': ['GAG|TTG'], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='CGT|ATG'
+u='GTG|TGT'
+stack=['GTG|GTG', 'TGG|TGA', 'GGT|GAG', 'GTC|AGA', 'TCG|GAT', 'CGT|ATG', 'GTG|TGT']
+local_adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': [], 'CGT|ATG': [], 'TGG|TGA': [], 'GTG|TGT': ['TGA|GTT'], 'GTG|GTG': [], 'TGA|GTT': ['GAG|TTG'], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='GTG|TGT'
+u='TGA|GTT'
+stack=['GTG|GTG', 'TGG|TGA', 'GGT|GAG', 'GTC|AGA', 'TCG|GAT', 'CGT|ATG', 'GTG|TGT', 'TGA|GTT']
+local_adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': [], 'CGT|ATG': [], 'TGG|TGA': [], 'GTG|TGT': [], 'GTG|GTG': [], 'TGA|GTT': ['GAG|TTG'], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='TGA|GTT'
+u='GAG|TTG'
+stack=['GTG|GTG', 'TGG|TGA', 'GGT|GAG', 'GTC|AGA', 'TCG|GAT', 'CGT|ATG', 'GTG|TGT', 'TGA|GTT', 'GAG|TTG']     
+local_adj={'GAG|TTG': ['AGA|TGA'], 'TCG|GAT': [], 'CGT|ATG': [], 'TGG|TGA': [], 'GTG|TGT': [], 'GTG|GTG': [], 'TGA|GTT': [], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='GAG|TTG'
+u='AGA|TGA'
+stack=['GTG|GTG', 'TGG|TGA', 'GGT|GAG', 'GTC|AGA', 'TCG|GAT', 'CGT|ATG', 'GTG|TGT', 'TGA|GTT', 'GAG|TTG', 'AGA|TGA']
+local_adj={'GAG|TTG': [], 'TCG|GAT': [], 'CGT|ATG': [], 'TGG|TGA': [], 'GTG|TGT': [], 'GTG|GTG': [], 'TGA|GTT': [], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='AGA|TGA'
+Parthopath=['AGA|TGA']
+local_adj={'GAG|TTG': [], 'TCG|GAT': [], 'CGT|ATG': [], 'TGG|TGA': [], 'GTG|TGT': [], 'GTG|GTG': [], 'TGA|GTT': [], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='GAG|TTG'
+Parthopath=['AGA|TGA', 'GAG|TTG']
+local_adj={'GAG|TTG': [], 'TCG|GAT': [], 'CGT|ATG': [], 'TGG|TGA': [], 'GTG|TGT': [], 'GTG|GTG': [], 'TGA|GTT': [], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='TGA|GTT'
+Parthopath=['AGA|TGA', 'GAG|TTG', 'TGA|GTT']
+local_adj={'GAG|TTG': [], 'TCG|GAT': [], 'CGT|ATG': [], 'TGG|TGA': [], 'GTG|TGT': [], 'GTG|GTG': [], 'TGA|GTT': [], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='GTG|TGT'
+Parthopath=['AGA|TGA', 'GAG|TTG', 'TGA|GTT', 'GTG|TGT']
+local_adj={'GAG|TTG': [], 'TCG|GAT': [], 'CGT|ATG': [], 'TGG|TGA': [], 'GTG|TGT': [], 'GTG|GTG': [], 'TGA|GTT': [], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='CGT|ATG'
+Parthopath=['AGA|TGA', 'GAG|TTG', 'TGA|GTT', 'GTG|TGT', 'CGT|ATG']
+local_adj={'GAG|TTG': [], 'TCG|GAT': [], 'CGT|ATG': [], 'TGG|TGA': [], 'GTG|TGT': [], 'GTG|GTG': [], 'TGA|GTT': [], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='TCG|GAT'
+Parthopath=['AGA|TGA', 'GAG|TTG', 'TGA|GTT', 'GTG|TGT', 'CGT|ATG', 'TCG|GAT']
+local_adj={'GAG|TTG': [], 'TCG|GAT': [], 'CGT|ATG': [], 'TGG|TGA': [], 'GTG|TGT': [], 'GTG|GTG': [], 'TGA|GTT': [], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='GTC|AGA'
+Parthopath=['AGA|TGA', 'GAG|TTG', 'TGA|GTT', 'GTG|TGT', 'CGT|ATG', 'TCG|GAT', 'GTC|AGA']
+local_adj={'GAG|TTG': [], 'TCG|GAT': [], 'CGT|ATG': [], 'TGG|TGA': [], 'GTG|TGT': [], 'GTG|GTG': [], 'TGA|GTT': [], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='GGT|GAG'
+Parthopath=['AGA|TGA', 'GAG|TTG', 'TGA|GTT', 'GTG|TGT', 'CGT|ATG', 'TCG|GAT', 'GTC|AGA', 'GGT|GAG']
+local_adj={'GAG|TTG': [], 'TCG|GAT': [], 'CGT|ATG': [], 'TGG|TGA': [], 'GTG|TGT': [], 'GTG|GTG': [], 'TGA|GTT': [], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='TGG|TGA'
+Parthopath=['AGA|TGA', 'GAG|TTG', 'TGA|GTT', 'GTG|TGT', 'CGT|ATG', 'TCG|GAT', 'GTC|AGA', 'GGT|GAG', 'TGG|TGA']local_adj={'GAG|TTG': [], 'TCG|GAT': [], 'CGT|ATG': [], 'TGG|TGA': [], 'GTG|TGT': [], 'GTG|GTG': [], 'TGA|GTT': [], 'GGT|GAG': [], 'GTC|AGA': []}
+
+v='GTG|GTG'
+Parthopath=['AGA|TGA', 'GAG|TTG', 'TGA|GTT', 'GTG|TGT', 'CGT|ATG', 'TCG|GAT', 'GTC|AGA', 'GGT|GAG', 'TGG|TGA', 'GTG|GTG']
+local_adj={'GAG|TTG': [], 'TCG|GAT': [], 'CGT|ATG': [], 'TGG|TGA': [], 'GTG|TGT': [], 'GTG|GTG': [], 'TGA|GTT': [], 'GGT|GAG': [], 'GTC|AGA': []}
+path=['GTG|GTG', 'TGG|TGA', 'GGT|GAG', 'GTC|AGA', 'TCG|GAT', 'CGT|ATG', 'GTG|TGT', 'TGA|GTT', 'GAG|TTG', 'AGA|TGA']
+
+prefix_nodes=['GTG', 'TGG', 'GGT', 'GTC', 'TCG', 'CGT', 'GTG', 'TGA', 'GAG', 'AGA']
+suffix_nodes=['GTG', 'TGA', 'GAG', 'AGA', 'GAT', 'ATG', 'TGT', 'GTT', 'TTG', 'TGA']
+
+prefix_string='GTGGTCGTGAGA'
+suffix_string='GTGAGATGTTGA'
+               012345678999 
+
+suffix_string[-(k+d):]='TGTTGA'
+k+d = 6
+
+GTGGTCGTGAGATGTTGA
