@@ -42,11 +42,11 @@ def colored_edges(P):
     list of tuples representing colored edges e.g. [(2, 4), (3, 6), (5, 1), ...]
     """
     chromosomes = ['(' + c for c in P.split('(') if c]
-    print(f"{chromosomes=}")
+    # print(f"{chromosomes=}")
     edges = []
     for chromosome in chromosomes:
         nodes = chromosome_to_cycle(chromosome)
-        print("My nodes are: ", nodes)
+        # print("My nodes are: ", nodes)
         n = len(nodes)
         for j in range(1, n // 2 + 1):
             edges.append((nodes[2 * j - 1], nodes[(2 * j) % n]))
