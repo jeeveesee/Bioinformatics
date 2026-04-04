@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(python Wk4_3_Chromo2Cycle.py)",
-      "Bash(python Wk4_7_2BreakOnGenomeGraph.py)"
+      "Bash(python Wk4_7_2BreakOnGenomeGraph.py)",
+      "Read(//c/Users/rajiv/Desktop/Studies/Bioinformatics/BI3/**)",
+      "Bash(python -m Wk4.Wk4_8_2BreakOnGenome)"
     ]
   }
 }
