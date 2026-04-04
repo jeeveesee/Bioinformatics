@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(cd \"C:\\\\Users\\\\rajiv\\\\Desktop\\\\Studies\\\\Bioinformatics\\\\BI3\" && python -m Wk4.Wk4_1_GreedySorting)"
-    ]
-  }
-}
