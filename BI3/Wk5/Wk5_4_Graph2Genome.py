@@ -23,7 +23,7 @@ GraphToGenome(GenomeGraph)
 import sys
 from pathlib import Path as partho
 sys.path.insert(0, str(partho(__file__).parent))
-from BI3.Wk5.Wk5_2_Cycle2Chromo import cycle_to_chromosome
+from Wk5.Wk5_2_Cycle2Chromo import cycle_to_chromosome
 
 
 def graph_to_genome(genome_graph_raw):
@@ -70,32 +70,32 @@ def graph_to_genome(genome_graph_raw):
 ###########################################################################
 
 if __name__ == "__main__":
-    # # Sample test
-    # genome_graph_raw = "(2, 4), (3, 6), (5, 1), (7, 9), (10, 12), (11, 8)"
-    # # Expected answer = (+1 -2 -3)(-4 +5 -6)
-    # answer = graph_to_genome(genome_graph_raw)
-    # print("".join("(" + " ".join(f"{n:+d}" for n in chrom) + ")" for chrom in answer))
-
-    # From file
-    # Get dataset
-    from pathlib import Path as partho
-
-    current_dir = partho(__file__).parent
-    filename = input("Please enter the filename: ")
-    file_path = current_dir / filename
-
-    with open(file_path, "r") as file:
-        genome_graph_raw = file.read().strip()
-
+    # Sample test
+    genome_graph_raw = "(2, 4), (3, 6), (5, 1), (7, 9), (10, 12), (11, 8)"
+    # Expected answer = (+1 -2 -3)(-4 +5 -6)
     answer = graph_to_genome(genome_graph_raw)
-    # print(answer)
-    # answer = "(" + " ".join(map(str, answer)) + ")"
-    # answer = "(" + " ".join(f"{n:+d}" for n in answer) + ")"
-    # answer = ", ".join(str(e) for e in answer)
-    answer = "".join("(" + " ".join(f"{n:+d}" for n in chrom) + ")" for chrom in answer)
+    print("".join("(" + " ".join(f"{n:+d}" for n in chrom) + ")" for chrom in answer))
 
-    with open("Wk4\Wk4_6_output.txt", "w") as output_file:
-        output_file.write(str(answer))
+    # # From file
+    # # Get dataset
+    # from pathlib import Path as partho
+
+    # current_dir = partho(__file__).parent
+    # filename = input("Please enter the filename: ")
+    # file_path = current_dir / filename
+
+    # with open(file_path, "r") as file:
+    #     genome_graph_raw = file.read().strip()
+
+    # answer = graph_to_genome(genome_graph_raw)
+    # # print(answer)
+    # # answer = "(" + " ".join(map(str, answer)) + ")"
+    # # answer = "(" + " ".join(f"{n:+d}" for n in answer) + ")"
+    # # answer = ", ".join(str(e) for e in answer)
+    # answer = "".join("(" + " ".join(f"{n:+d}" for n in chrom) + ")" for chrom in answer)
+
+    # with open("Wk5\Wk5_4_output.txt", "w") as output_file:
+    #     output_file.write(str(answer))
 
 
     # Exam
