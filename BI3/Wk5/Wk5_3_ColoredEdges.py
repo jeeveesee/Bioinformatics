@@ -17,7 +17,7 @@ ColoredEdges(P)
      return Edges
 """
 # NOTE: YOU HAVE TO RUN THIS FROM THE BI3 FOLDER WITH THE COMMAND:
-# python -m Wk4.Wk4_5_ColoredEdges (NO .py)
+# python -m Wk5.Wk5_3_ColoredEdges (NO .py)
 #########################################################################################
 
 # Main code
@@ -25,7 +25,7 @@ ColoredEdges(P)
 import sys
 from pathlib import Path as partho
 sys.path.insert(0, str(partho(__file__).parent))
-from Wk4_3_Chromo2Cycle import chromosome_to_cycle
+from BI3.Wk5.Wk5_1_Chromo2Cycle import chromosome_to_cycle
 
 
 def colored_edges(P):

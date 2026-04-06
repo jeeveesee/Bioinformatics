@@ -15,7 +15,7 @@ GraphToGenome(GenomeGraph)
      return P
 """
 # NOTE: YOU HAVE TO RUN THIS FROM THE BI3 FOLDER WITH THE COMMAND:
-# python -m Wk4.Wk4_6_Graph2Genome (NO .py)
+# python -m Wk5.Wk5_4_Graph2Genome (NO .py)
 #########################################################################################
 
 # Main code
@@ -23,7 +23,7 @@ GraphToGenome(GenomeGraph)
 import sys
 from pathlib import Path as partho
 sys.path.insert(0, str(partho(__file__).parent))
-from Wk4_4_Cycle2Chromo import cycle_to_chromosome
+from BI3.Wk5.Wk5_2_Cycle2Chromo import cycle_to_chromosome
 
 
 def graph_to_genome(genome_graph_raw):

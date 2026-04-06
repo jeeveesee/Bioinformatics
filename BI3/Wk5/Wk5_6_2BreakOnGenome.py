@@ -15,7 +15,7 @@
      return P
 """
 # NOTE: YOU HAVE TO RUN THIS FROM THE BI3 FOLDER WITH THE COMMAND:
-# python -m Wk4.Wk4_8_2BreakOnGenome (NO .py)
+# python -m Wk5.Wk5_6_2BreakOnGenome (NO .py)
 #########################################################################################
 
 # Main code
@@ -24,9 +24,9 @@ import sys
 from pathlib import Path as partho
 
 sys.path.insert(0, str(partho(__file__).parent))
-from Wk4_5_ColoredEdges import colored_edges
-from Wk4_6_Graph2Genome import graph_to_genome
-from Wk4_7_2BreakOnGenomeGraph import two_break_on_genome_graph
+from BI3.Wk5.Wk5_3_ColoredEdges import colored_edges
+from BI3.Wk5.Wk5_4_Graph2Genome import graph_to_genome
+from BI3.Wk5.Wk5_5_2BreakOnGenomeGraph import two_break_on_genome_graph
 
 
 def two_break_on_genome(genome_raw, i1, i2, i3, i4):
