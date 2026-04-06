@@ -69,7 +69,7 @@ if __name__ == "__main__":
     # answer = "(" + " ".join(map(str, answer)) + ")"
     answer = "(" + " ".join(f"{n:+d}" for n in answer) + ")"
 
-    with open("Wk4_4_output.txt", "w") as output_file:
+    with open("Wk5_2_output.txt", "w") as output_file:
         output_file.write(str(answer))
 
 

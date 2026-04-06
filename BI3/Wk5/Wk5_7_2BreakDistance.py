@@ -19,7 +19,7 @@ import sys
 from pathlib import Path as partho
 
 sys.path.insert(0, str(partho(__file__).parent))
-from BI3.Wk5.Wk5_3_ColoredEdges import colored_edges
+from Wk5.Wk5_3_ColoredEdges import colored_edges
 
 
 def two_break_distance(genome_p_raw, genome_q_raw):
@@ -114,7 +114,7 @@ if __name__ == "__main__":
     # # answer = ", ".join(str(e) for e in answer)
     # # answer = "".join("(" + " ".join(f"{n:+d}" for n in chrom) + ")" for chrom in answer)
 
-    with open(current_dir / "Wk4_9_output.txt", "w") as output_file:
+    with open(current_dir / "Wk5_7_output.txt", "w") as output_file:
         output_file.write(str(answer))
 
 

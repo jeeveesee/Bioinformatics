@@ -76,7 +76,7 @@ if __name__ == "__main__":
     # print(answer)
     answer = "(" + " ".join(map(str, answer)) + ")"
 
-    with open("Wk4_3_output.txt", "w") as output_file:
+    with open("Wk5_1_output.txt", "w") as output_file:
         output_file.write(str(answer))
 
     # Exam

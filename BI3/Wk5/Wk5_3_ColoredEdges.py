@@ -25,7 +25,7 @@ ColoredEdges(P)
 import sys
 from pathlib import Path as partho
 sys.path.insert(0, str(partho(__file__).parent))
-from BI3.Wk5.Wk5_1_Chromo2Cycle import chromosome_to_cycle
+from Wk5.Wk5_1_Chromo2Cycle import chromosome_to_cycle
 
 
 def colored_edges(P):
@@ -79,7 +79,7 @@ if __name__ == "__main__":
     # # answer = "(" + " ".join(f"{n:+d}" for n in answer) + ")"
     # answer = ", ".join(str(e) for e in answer)
 
-    # with open("Wk4\Wk4_5_output.txt", "w") as output_file:
+    # with open("Wk4\Wk5_3_output.txt", "w") as output_file:
     #     output_file.write(str(answer))
 
 

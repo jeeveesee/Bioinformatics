@@ -94,7 +94,7 @@ if __name__ == "__main__":
     # answer = "".join("(" + " ".join(f"{n:+d}" for n in chrom) + ")" for chrom in answer)
     print(", ".join(f"({a}, {b})" for a, b in answer))
 
-    with open(current_dir / "Wk4_7_output.txt", "w") as output_file:
+    with open(current_dir / "Wk5_5_output.txt", "w") as output_file:
         answer = ", ".join(f"({a}, {b})" for a, b in answer)
         output_file.write(str(answer))
 

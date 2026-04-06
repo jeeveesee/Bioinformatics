@@ -24,9 +24,9 @@ import sys
 from pathlib import Path as partho
 
 sys.path.insert(0, str(partho(__file__).parent))
-from BI3.Wk5.Wk5_3_ColoredEdges import colored_edges
-from BI3.Wk5.Wk5_4_Graph2Genome import graph_to_genome
-from BI3.Wk5.Wk5_5_2BreakOnGenomeGraph import two_break_on_genome_graph
+from Wk5.Wk5_3_ColoredEdges import colored_edges
+from Wk5.Wk5_4_Graph2Genome import graph_to_genome
+from Wk5.Wk5_5_2BreakOnGenomeGraph import two_break_on_genome_graph
 
 
 def two_break_on_genome(genome_raw, i1, i2, i3, i4):
@@ -94,7 +94,7 @@ if __name__ == "__main__":
     # answer = ", ".join(str(e) for e in answer)
     # answer = "".join("(" + " ".join(f"{n:+d}" for n in chrom) + ")" for chrom in answer)
 
-    with open(current_dir / "Wk4_8_output.txt", "w") as output_file:
+    with open(current_dir / "Wk5_6_output.txt", "w") as output_file:
         output_file.write(str(answer))
 
 
