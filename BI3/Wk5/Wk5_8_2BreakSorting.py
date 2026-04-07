@@ -34,8 +34,8 @@ import sys
 from pathlib import Path as partho
 
 sys.path.insert(0, str(partho(__file__).parent))
-from BI3.Wk5.Wk5_3_ColoredEdges import colored_edges
-from BI3.Wk5.Wk5_6_2BreakOnGenome import two_break_on_genome
+from Wk5.Wk5_3_ColoredEdges import colored_edges
+from Wk5.Wk5_6_2BreakOnGenome import two_break_on_genome
 
 
 def format_genome(chromosomes):
@@ -142,32 +142,32 @@ def two_break_sorting(genome_p_raw, genome_q_raw):
 ###########################################################################
 
 if __name__ == "__main__":
-    # Sample test
-    genome_P_raw = "(+1 -2 -3 +4)"
-    genome_Q_raw = "(+1 +2 -4 -3)"
+    # # Sample test
+    # genome_P_raw = "(+1 -2 -3 +4)"
+    # genome_Q_raw = "(+1 +2 -4 -3)"
 
-    # Expected answer =
-    # (+1 -2 -3 +4)
-    # (+1 -2 -3)(+4)
-    # (+1 -2 -4 -3)
-    # (-3 +1 +2 -4)
+    # # Expected answer =
+    # # (+1 -2 -3 +4)
+    # # (+1 -2 -3)(+4)
+    # # (+1 -2 -4 -3)
+    # # (-3 +1 +2 -4)
+    # answer = two_break_sorting(genome_P_raw, genome_Q_raw)
+    # print(answer)
+
+    # From file
+    # Get dataset
+    from pathlib import Path as partho
+
+    current_dir = partho(__file__).parent
+    filename = input("Please enter the filename: ")
+    file_path = current_dir / filename
+
+    with open(file_path, "r") as file:
+        genome_P_raw = file.readline().strip()
+        genome_Q_raw = file.readline().strip()
+        # i1, i2, i3, i4 = map(int, file.readline().strip().split(","))
+
     answer = two_break_sorting(genome_P_raw, genome_Q_raw)
-    print(answer)
-
-    # # From file
-    # # Get dataset
-    # from pathlib import Path as partho
-
-    # current_dir = partho(__file__).parent
-    # filename = input("Please enter the filename: ")
-    # file_path = current_dir / filename
-
-    # with open(file_path, "r") as file:
-    #     genome_P_raw = file.readline().strip()
-    #     genome_Q_raw = file.readline().strip()
-    #     # i1, i2, i3, i4 = map(int, file.readline().strip().split(","))
-
-    # answer = two_break_distance(genome_P_raw, genome_Q_raw)
     # answer = [tuple(f"{n:+d}" for n in chrom) for chrom in answer]
     # answer = "".join("(" + " ".join(chrom) + ")" for chrom in answer)
     # print(answer)
@@ -177,8 +177,8 @@ if __name__ == "__main__":
     # # answer = ", ".join(str(e) for e in answer)
     # # answer = "".join("(" + " ".join(f"{n:+d}" for n in chrom) + ")" for chrom in answer)
 
-    # with open(current_dir / "Wk4_10_output.txt", "w") as output_file:
-    #     output_file.write(str(answer))
+    with open(current_dir / "Wk5_8_output.txt", "w") as output_file:
+        output_file.write(str(answer))
 
 
     # Exam
@@ -192,74 +192,105 @@ if __name__ == "__main__":
 
 
 """
-Notes:
+Notes on working:
 
-Step 1 — Get colored edges for P and Q
-
-  colored_edges() (from Wk4_5) converts each genome into a list of node pairs. Each gene i maps to two nodes:   2i-1 (tail) and 2i (head). So:
-
-  ┌──────┬───────────┬───────────┐
-  │ Gene │ Tail node │ Head node │
-  ├──────┼───────────┼───────────┤
-  │ +1   │ 1         │ 2         │
-  ├──────┼───────────┼───────────┤
-  │ +2   │ 3         │ 4         │
-  ├──────┼───────────┼───────────┤
-  │ +3   │ 5         │ 6         │
-  ├──────┼───────────┼───────────┤
-  │ +4   │ 7         │ 8         │
-  ├──────┼───────────┼───────────┤
-  │ +5   │ 9         │ 10        │
-  ├──────┼───────────┼───────────┤
-  │ +6   │ 11        │ 12        │
-  └──────┴───────────┴───────────┘
-
-  Colored edges connect the head of gene j to the tail of gene j+1 (wrapping around):
-
-  edges_P = [(2,3), (4,5), (6,7), (8,9), (10,11), (12,1)]
-  edges_Q = [(2,6), (5,12), (11,10), (9,1), (4,8), (7,3)]
+Sure! Using the sample inputs:
+  P = (+1 -2 -3 +4)
+  Q = (+1 +2 -4 -3)
 
   ---
-  Step 2 — Build adjacency maps
+  Setup — Build the Blue Edges (Q, fixed forever)
 
-  We turn those edge lists into dictionaries so we can say "from node X, where do I go?":
+  colored_edges(Q) gives us adj_blue. These never change — Q is our target.
 
-  adj_P:  2↔3,  4↔5,  6↔7,  8↔9,  10↔11,  12↔1
-  adj_Q:  2↔6,  5↔12, 11↔10, 9↔1,  4↔8,   7↔3
-
-  ---
-  Step 3 — Count cycles by alternating P→Q
-
-  In the breakpoint graph, edges from P and Q alternate to form cycles. To find a cycle, we:
-  1. Start at any unvisited node
-  2. Follow a P-edge
-  3. Follow a Q-edge
-  4. Repeat until we return to the start
-
-  Cycle 1 — start at node 2:
-  2 --[P]--> 3 --[Q]--> 7 --[P]--> 6 --[Q]--> 2  ✓ back to start
-  Nodes visited: {2, 3, 6, 7}
-
-  Cycle 2 — next unvisited is 4:
-  4 --[P]--> 5 --[Q]--> 12 --[P]--> 1 --[Q]--> 9 --[P]--> 8 --[Q]--> 4  ✓
-  Nodes visited: {4, 5, 8, 9, 1, 12}
-
-  Cycle 3 — next unvisited is 10:
-  10 --[P]--> 11 --[Q]--> 10  ✓ back to start immediately
-  Nodes visited: {10, 11}
-
-  Total cycles = 3
+  adj_blue:  2↔3,  4↔8,  7↔6,  5↔1
 
   ---
-  Step 4 — Final answer
+  Iteration 1
 
-  d(P, Q) = blocks − cycles = 6 − 3 = 3  ✓
+  Red edges from current P = (+1 -2 -3 +4):
+  adj_red:  2↔4,  3↔6,  5↔7,  8↔1
+
+  Find non-trivial cycle (start at smallest unvisited node = 1, alternate red→blue):
+  1 -[R]→ 8 -[B]→ 4 -[R]→ 2 -[B]→ 3 -[R]→ 6 -[B]→ 7 -[R]→ 5 -[B]→ 1  ✓
+  cycle = [1, 8, 4, 2, 3, 6, 7, 5] — length 8, non-trivial ✓
+
+  Extract i1,i2,i3,i4 from first 4 nodes:
+  i1=1, i2=8  ← red edge
+        i2=8, i3=4  ← blue edge (8→4)
+              i3=4, i4=2  ← red edge
+
+  Apply 2-break two_break_on_genome(P, i1=1, i2=8, i4=2, i3=4):
+  - Remove red edges (1,8) and (4,2)=(2,4)
+  - Add red edges (1,2) and (8,4)=(4,8)
+
+  New P → (+1)(+2 -4 +3)
 
   ---
-  Why does this formula work?
+  Iteration 2
 
-  Intuitively: if P and Q were identical, every gene would form its own 2-node cycle → cycles = blocks →     
-  distance = 0. Every 2-break operation can increase the cycle count by at most 1, so the minimum number of  
-  2-breaks needed to transform P into Q is exactly how many cycles are "missing" from the maximum possible. 
+  Red edges from (+1)(+2 -4 +3):
+  adj_red:  2↔1,  4↔8,  7↔5,  6↔3
+
+  Find non-trivial cycle (start at 1, alternate red→blue):
+  1 -[R]→ 2 -[B]→ 3 -[R]→ 6 -[B]→ 7 -[R]→ 5 -[B]→ 1  ✓
+  cycle = [1, 2, 3, 6, 7, 5] — length 6, non-trivial ✓
+
+  Note: node 4 forms a trivial cycle 4-[R]→8-[B]→4 — red and blue agree on (4,8), so already "solved".
+
+  Extract i1,i2,i3,i4:
+  i1=1, i2=2  ← red edge
+        i2=2, i3=3  ← blue edge (2→3)
+              i3=3, i4=6  ← red edge
+
+  Apply 2-break two_break_on_genome(P, 1, 2, 6, 3):
+  - Remove red edges (1,2) and (3,6)
+  - Add red edges (1,6) and (2,3)
+
+  New P → (+1 +2 -4 +3)
+
+  ---
+  Iteration 3
+
+  Red edges from (+1 +2 -4 +3):
+  adj_red:  2↔3,  4↔8,  7↔5,  6↔1
+
+  Find non-trivial cycle (start at 1):
+  1 -[R]→ 6 -[B]→ 7 -[R]→ 5 -[B]→ 1  ✓
+  cycle = [1, 6, 7, 5] — length 4, non-trivial ✓
+
+  Note: nodes 2,3 and 4,8 are both trivial now.
+
+  Extract i1,i2,i3,i4:
+  i1=1, i2=6  ← red edge
+        i2=6, i3=7  ← blue edge (6→7)
+              i3=7, i4=5  ← red edge
+
+  Apply 2-break two_break_on_genome(P, 1, 6, 5, 7):
+  - Remove red edges (1,6) and (7,5)=(5,7)
+  - Add red edges (1,5) and (6,7)
+
+  New P → (+1 +2 -4 -3) = Q ✓
+
+  ---
+  Iteration 4 — Termination
+
+  Red edges now match blue edges exactly:
+  adj_red:  2↔3,  4↔8,  7↔6,  5↔1
+  adj_blue: 2↔3,  4↔8,  7↔6,  5↔1
+
+  Every cycle is trivial (length 2). find_non_trivial_cycle returns None → loop exits.
+
+  ---
+  Final Output
+
+  (+1 -2 -3 +4)     ← initial P
+  (+1)(+2 -4 +3)    ← after 2-break 1
+  (+1 +2 -4 +3)     ← after 2-break 2
+  (+1 +2 -4 -3)     ← after 2-break 3 = Q
+
+  3 steps = d(P, Q) = 3 ✓ — guaranteed shortest because each 2-break increases the cycle count by exactly 1, and we need blocks − cycles = 4 − 1 = 3 additional
+  cycles to reach the trivial state. 
 
 """
+
