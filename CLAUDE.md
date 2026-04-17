@@ -14,7 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 -  Do not use camel case anywhere
 -  In each function definition, please provide docstrings with explanation, parameters, return definitions
 -  Make sure the sample test input under the name=="main" section is parsed properly for input into functions
--  Make sure the output is formatted to match the expected output under the sample test
+-  Make sure the output is formatted to match the expected output under the sample test. Create a formatterer function under the main code section that formats the output into the proper format.
 - Pure Python, no external libraries (only `pathlib`, `collections`, `typing` from stdlib)
 - Functions only — no classes
 - Pseudocode from the textbook is quoted in the module docstring at the top of each file

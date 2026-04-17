@@ -98,11 +98,3 @@ if __name__ == "__main__":
         answer = ", ".join(f"({a}, {b})" for a, b in answer)
         output_file.write(str(answer))
 
-
-    # Exam
-    # permutation = ["+6", "-12", "-9", "+17", "+18", "-4", "+5",
-    #                "-3", "+11", "+19", "+20", "+10", "+8", "+15", "-14",
-    #                 "-13", "+2", "+7", "-16", "-1"]
-    # # Expected answer = 8
-    # answer = number_of_breakpoints(permutation)
-    # print(answer)

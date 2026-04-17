@@ -105,23 +105,29 @@ if __name__ == "__main__":
     # answer = shared_kmers(kmer, dna_string_1, dna_string_2)
     # print(answer)
 
-    # From file
-    current_dir = partho(__file__).parent
-    filename = input("Please enter the filename: ")
-    file_path = current_dir / filename
+    # # From file
+    # current_dir = partho(__file__).parent
+    # filename = input("Please enter the filename: ")
+    # file_path = current_dir / filename
 
-    with open(file_path, "r") as file:
-        k_val = int(file.readline().strip())
-        dna_string_1 = file.readline().strip()
-        dna_string_2 = file.readline().strip()
+    # with open(file_path, "r") as file:
+    #     k_val = int(file.readline().strip())
+    #     dna_string_1 = file.readline().strip()
+    #     dna_string_2 = file.readline().strip()
 
-    answer = shared_kmers(k_val, dna_string_1, dna_string_2)
-    # print(answer)
+    # answer = shared_kmers(k_val, dna_string_1, dna_string_2)
+    # # print(answer)
 
-    current_dir = partho(__file__).parent
-    with open(current_dir / "Wk5_9_output.txt", "w") as output_file:
-        output_file.write(answer)
+    # current_dir = partho(__file__).parent
+    # with open(current_dir / "Wk5_9_output.txt", "w") as output_file:
+    #     output_file.write(answer)
 
+    # Exam
+    kmer = 3
+    dna_string_1 = "TCTTGCAGCTCGTCA"
+    dna_string_2 = "GTACTTTCAGAATCA"
+    answer = shared_kmers(kmer, dna_string_1, dna_string_2)
+    print(answer)
 """
  ---
   Walkthrough: k=3, dna1="AAACTCATC", dna2="TTTCAAATC"
