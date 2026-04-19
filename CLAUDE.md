@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 # Coding instructions
 
 -  Utilize the comments at the top of the file to determine what needs to be done in the code
--  In some cases, there might be some pseudocode available within the comments section at the top of the file for you to use
+-  In some cases, there might be some pseudocode available within the comments section at the top of the file for you to use. If not, create one
 -  There is a sample test within the name=="main" section to test your code output. Ensure it matches the output exactly
 
 # Coding Style
@@ -17,14 +17,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 -  Make sure the output is formatted to match the expected output under the sample test. Create a formatterer function under the main code section that formats the output into the proper format.
 - Pure Python, no external libraries (only `pathlib`, `collections`, `typing` from stdlib)
 - Functions only — no classes
-- Pseudocode from the textbook is quoted in the module docstring at the top of each file
 - `from pathlib import Path as partho` is the local convention for `Path`
 - Debug `print()` statements are commented out, not deleted
 - Signed integers formatted with `f"{n:+d}"` when writing back to string form
 
 ## Repository Overview
 
-Solutions to the three-course Bioinformatics specialization on Coursera (Compeau & Pevzner). Each course has its own top-level folder:
+Solutions to the multi-course Bioinformatics specialization on Coursera (Compeau & Pevzner). Each course has its own top-level folder, for example:
 
 - **BI1** — DNA pattern matching, motif finding (Wk_1–Wk_5)
 - **BI2** — Genome assembly, de Bruijn graphs, Eulerian paths (Wk1–Wk4)
@@ -32,7 +31,7 @@ Solutions to the three-course Bioinformatics specialization on Coursera (Compeau
 
 ## Running Code
 
-Scripts are designed as standalone executables. Most have an embedded sample test in the `if __name__ == "__main__":` block and a commented-out file-reading section for dataset input.
+Scripts are designed as standalone executables. Most have an embedded sample test in the `if __name__ == "__main__":` block and a commented-out file-reading section for dataset input for later use.
 
 ```bash
 # BI1 — run directly from the repo root

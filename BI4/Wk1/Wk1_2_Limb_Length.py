@@ -1,153 +1,123 @@
 ##############################################################################################
 # Molecular Evolution  - Bioinformatic IV Course from Coursera
 #
-# Week 1 - Distance matrices to evolutionary trees
-# Distances Between Leaves Problem: Compute the distances between leaves in a weighted tree.
-# Code Challenge: Solve the Distances Between Leaves Problem. The tree is given as an adjacency list of a graph whose leaves are integers between 0 and n - 1; the notation a->b:c means that node a is connected to node b by an edge of weight c. The matrix you return should be space-separated.
-# Input:  An integer n followed by the adjacency list of a weighted tree with n leaves.
-# Output: An n x n matrix (di,j), where di,j is the length of the path between leaves i and j.
+# Week 1 - Distance-Based Phylogeny Construction
+# Code Challenge: Solve the Limb Length Problem.
+# Input: An integer n, followed by an integer j between 0 and n - 1,
+# followed by a space-separated additive distance matrix D (whose elements are integers).
+# Output: The limb length of the leaf in Tree(D) corresponding to row j of this distance matrix
+# (use 0-based indexing).
 ##############################################################################################
+"""
+Pseudocode (Compeau & Pevzner):
 
-# Pseudocode (Compeau & Pevzner):
-#   DistancesBetweenLeaves(T, n):
-#       for each pair of leaves i, j in {0..n-1}:
-#           di,j ← length of the path connecting i and j in T
-#       return (di,j)
+LimbLength(j, n, D)
+    for each pair of leaves i and k such that i ≠ j and k ≠ j
+        limb_length(j) <- (D(i, j) + D(j, k) - D(i, k)) / 2
+    return minimum limb_length(j) over all valid pairs i, k
+"""
+
+from pathlib import Path as partho
 
 
-def parse_adjacency_list(dist_matrix):
-    """Parse a weighted adjacency list string into a nested dict graph.
+# Main code
 
-    Parameters
-    ----------
-    dist_matrix : str
-        Adjacency list where each line has the form 'a->b:c'.
-
-    Returns
-    -------
-    dict[int, dict[int, int]]
-        graph[u][v] = edge weight between u and v.
+def parse_distance_matrix(dist_matrix_str):
     """
-    graph = {}
-    for line in dist_matrix.strip().split('\n'):
-        left, right = line.split('->')
-        u = int(left)
-        v_str, w_str = right.split(':')
-        v, w = int(v_str), int(w_str)
-        if u not in graph:
-            graph[u] = {}
-        graph[u][v] = w
-    print(f"{graph=}")
-    return graph
+    Parse a tab/space-separated distance matrix string into a 2D list of integers.
 
+    Parameters:
+        dist_matrix_str (str): Multi-line string with tab or space-separated integer values.
 
-
-def distance_bw_leaves(n, dist_matrix):
-    """Compute all pairwise distances between the n leaves of a weighted tree.
-
-    Leaves are nodes labelled 0 through n-1. Internal nodes have higher labels.
-    A DFS from each leaf accumulates the total edge weight along the unique
-    tree path to every other reachable node.
-
-    Parameters
-    ----------
-    n : int
-        Number of leaves (labelled 0 … n-1).
-    dist_matrix : str
-        Adjacency list of the weighted tree (format 'a->b:c' per line).
-
-    Returns
-    -------
-    list[list[int]]
-        n x n matrix where entry [i][j] is the path length from leaf i to leaf j.
+    Returns:
+        list[list[int]]: 2D list representing the distance matrix.
     """
-    graph = parse_adjacency_list(dist_matrix)
+    matrix = []
+    for line in dist_matrix_str.strip().split('\n'):
+        row = list(map(int, line.split()))
+        matrix.append(row)
+    return matrix
 
-    dist = [[0] * n for _ in range(n)]
-    print(f"{dist=}")
 
-    for leaf in range(n):
-        # DFS — tree has no cycles, so first visit gives shortest (only) path
-        visited = {}
-        stack = [(leaf, 0)]
-        print(f"{stack=}")
-        while stack:
-            node, d = stack.pop()
-            print(f"{node=}")
-            print(f"{d=}")
-            if node in visited:
+def limb_length(n, j, dist_matrix_str):
+    """
+    Compute the limb length of leaf j in the tree represented by an additive distance matrix.
+
+    Uses the formula:
+        LimbLength(j) = min over all pairs i, k (i != j, k != j, i != k)
+                        of (D[i][j] + D[j][k] - D[i][k]) / 2
+
+    Parameters:
+        n (int): Number of leaves in the tree (used for input parsing context).
+        j (int): 0-based index of the leaf whose limb length is to be computed.
+        dist_matrix_str (str): Multi-line string of the additive distance matrix.
+
+    Returns:
+        int: The limb length of leaf j.
+    """
+    d = parse_distance_matrix(dist_matrix_str)
+    size = len(d)
+
+    min_limb = float('inf')
+    for i in range(size):
+        if i == j:
+            continue
+        for k in range(i + 1, size):
+            if k == j:
                 continue
-            visited[node] = d
-            print(f"{visited=}")
-            # dictionary.get(key, default=None)
-            for neighbor, weight in graph.get(node, {}).items():
-                print(f"{neighbor=}")
-                print(f"{weight=}")
-                if neighbor not in visited:
-                    stack.append((neighbor, d + weight))
-                    print(f"New stack, {stack=}")
+            limb = (d[i][j] + d[j][k] - d[i][k]) // 2
+            # print(f"  i={i}, k={k}: ({d[i][j]} + {d[j][k]} - {d[i][k]}) // 2 = {limb}")
+            if limb < min_limb:
+                min_limb = limb
 
-        for other_leaf in range(n):
-            dist[leaf][other_leaf] = visited.get(other_leaf, 0)
-
-    return dist
+    return min_limb
 
 
 def formatterer(answer):
-    """Format an n x n distance matrix as tab-separated rows.
-
-    Parameters
-    ----------
-    answer : list[list[int]]
-        The distance matrix returned by distance_bw_leaves.
-
-    Returns
-    -------
-    str
-        Each row on its own line with values separated by tabs.
     """
-    return '\n'.join('\t'.join(map(str, row)) for row in answer)
+    Format the limb length result as a plain integer string.
+
+    Parameters:
+        answer (int): The computed limb length.
+
+    Returns:
+        str: The answer as a string.
+    """
+    return str(answer)
 
 
 ###########################################################################
 
 if __name__ == "__main__":
-    # Sample test
-    n = 4
-    dist_matrix = """0->4:11
-1->4:2
-2->5:6
-3->5:7
-4->0:11
-4->1:2
-4->5:4
-5->4:4
-5->3:7
-5->2:6"""
-    # Expected answer =
-    # 0	13	21	22
-    # 13  0	12	13
-    # 21	12	0	13
-    # 22	13	13	0
-    answer = distance_bw_leaves(n, dist_matrix)
-    print(formatterer(answer)) # Formatted answer
+#     # Sample test
+#     n = 4
+#     j = 1
+#     dist_matrix = """0	13	21	22
+# 13	0	12	13
+# 21	12	0	13
+# 22	13	13	0"""
+#     # Expected answer =
+#     # 2
+#     answer = limb_length(n, j, dist_matrix)
+#     print(formatterer(answer)) # Formatted answer
 
-    # # From file
+    # From file
 
-    # # Get dataset
-    # from pathlib import Path as partho
+    # Get dataset
+    from pathlib import Path as partho
 
-    # current_dir = partho(__file__).parent
-    # filename = input("Please enter the filename: ")
-    # file_path = current_dir / filename
+    current_dir = partho(__file__).parent
+    filename = input("Please enter the filename: ")
+    file_path = current_dir / filename
 
-    # with open(file_path, "r") as file:
-    #     data = file.read().strip()
-    #     lines = data.split('\n')
-    #     n = int(lines[0])
-    #     dist_matrix = '\n'.join(lines[1:])
+    with open(file_path, "r") as file:
+        data = file.read().strip()
+        lines = data.split('\n')
+        n = int(lines[0])
+        j = int(lines[1])
+        dist_matrix = '\n'.join(lines[2:])
 
-    # answer = distance_bw_leaves(n, dist_matrix)
+    answer = limb_length(n, j, dist_matrix)
 
-    # with open("Wk1_1_output.txt", "w") as output_file:
-    #     output_file.write(formatterer(answer))
+    with open("Wk1_2_output.txt", "w") as output_file:
+        output_file.write(formatterer(answer))
