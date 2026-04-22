@@ -56,17 +56,25 @@ def limb_length(n, j, dist_matrix_str):
         int: The limb length of leaf j.
     """
     d = parse_distance_matrix(dist_matrix_str)
-    size = len(d)
+    # print(f"{d=}")
+    size = len(d) # Num of rows
+    # print(f"{size=}")
 
     min_limb = float('inf')
     for i in range(size):
+        # print(f"Orig {i=}")
+        # print(f"Orig {j=}")
         if i == j:
             continue
         for k in range(i + 1, size):
+            # print(f"{i=}")
+            # print(f"{j=}")
+            # print(f"{k=}")
+            # print(f"{min_limb=}")
             if k == j:
                 continue
             limb = (d[i][j] + d[j][k] - d[i][k]) // 2
-            # print(f"  i={i}, k={k}: ({d[i][j]} + {d[j][k]} - {d[i][k]}) // 2 = {limb}")
+            # print(f"  i={i}, j={j}, k={k}: limb = ({d[i][j]} + {d[j][k]} - {d[i][k]}) // 2 = {limb}")
             if limb < min_limb:
                 min_limb = limb
 
@@ -89,35 +97,35 @@ def formatterer(answer):
 ###########################################################################
 
 if __name__ == "__main__":
-#     # Sample test
-#     n = 4
-#     j = 1
-#     dist_matrix = """0	13	21	22
-# 13	0	12	13
-# 21	12	0	13
-# 22	13	13	0"""
-#     # Expected answer =
-#     # 2
-#     answer = limb_length(n, j, dist_matrix)
-#     print(formatterer(answer)) # Formatted answer
+    # Sample test
+    n = 4
+    j = 1
+    dist_matrix_str = """0	13	21	22
+13	0	12	13
+21	12	0	13
+22	13	13	0"""
+    # Expected answer =
+    # 2
+    answer = limb_length(n, j, dist_matrix_str)
+    print(formatterer(answer)) # Formatted answer
 
-    # From file
+    # # From file
 
-    # Get dataset
-    from pathlib import Path as partho
+    # # Get dataset
+    # from pathlib import Path as partho
 
-    current_dir = partho(__file__).parent
-    filename = input("Please enter the filename: ")
-    file_path = current_dir / filename
+    # current_dir = partho(__file__).parent
+    # filename = input("Please enter the filename: ")
+    # file_path = current_dir / filename
 
-    with open(file_path, "r") as file:
-        data = file.read().strip()
-        lines = data.split('\n')
-        n = int(lines[0])
-        j = int(lines[1])
-        dist_matrix = '\n'.join(lines[2:])
+    # with open(file_path, "r") as file:
+    #     data = file.read().strip()
+    #     lines = data.split('\n')
+    #     n = int(lines[0])
+    #     j = int(lines[1])
+    #     dist_matrix_str = '\n'.join(lines[2:])
 
-    answer = limb_length(n, j, dist_matrix)
+    # answer = limb_length(n, j, dist_matrix_str)
 
-    with open("Wk1_2_output.txt", "w") as output_file:
-        output_file.write(formatterer(answer))
+    # with open("Wk1_2_output.txt", "w") as output_file:
+    #     output_file.write(formatterer(answer))
