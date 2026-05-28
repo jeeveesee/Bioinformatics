@@ -97,17 +97,17 @@ def formatterer(answer):
 ###########################################################################
 
 if __name__ == "__main__":
-    # Sample test
-    n = 4
-    j = 1
-    dist_matrix_str = """0	13	21	22
-13	0	12	13
-21	12	0	13
-22	13	13	0"""
-    # Expected answer =
-    # 2
-    answer = limb_length(n, j, dist_matrix_str)
-    print(formatterer(answer)) # Formatted answer
+#     # Sample test
+#     n = 4
+#     j = 1
+#     dist_matrix_str = """0	13	21	22
+# 13	0	12	13
+# 21	12	0	13
+# 22	13	13	0"""
+#     # Expected answer =
+#     # 2
+#     answer = limb_length(n, j, dist_matrix_str)
+#     print(formatterer(answer)) # Formatted answer
 
     # # From file
 
@@ -129,3 +129,15 @@ if __name__ == "__main__":
 
     # with open("Wk1_2_output.txt", "w") as output_file:
     #     output_file.write(formatterer(answer))
+
+    # Exam
+    n = 4
+    j = 2
+    dist_matrix_str = """0	14	17	17
+14	0	7	13
+17	7	0	16
+17	13	16	0"""
+    # Expected answer =
+    # 2
+    answer = limb_length(n, j, dist_matrix_str)
+    print(formatterer(answer)) # Formatted answer
