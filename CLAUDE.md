@@ -27,11 +27,12 @@ Solutions to the multi-course Bioinformatics specialization on Coursera (Compeau
 
 - **BI1** — DNA pattern matching, motif finding (Wk_1–Wk_5)
 - **BI2** — Genome assembly, de Bruijn graphs, Eulerian paths (Wk1–Wk4)
-- **BI3** — Sequence alignment, dynamic programming, genome rearrangements (Wk1–Wk4)
+- **BI3** — Sequence alignment, dynamic programming, genome rearrangements (Wk1–Wk5)
+- **BI4** — Molecular evolution (Wk1–Wk5)
 
 ## Running Code
 
-Scripts are designed as standalone executables. Most have an embedded sample test in the `if __name__ == "__main__":` block and a commented-out file-reading section for dataset input for later use.
+Scripts are designed as standalone executables (in most cases unless the script builds on algorithms from the past in which case it might make sense to import functions from prior weeks to enable efficiency). Most have an embedded sample test in the `if __name__ == "__main__":` block and a commented-out file-reading section for dataset input for later use.
 
 ```bash
 # BI1 — run directly from the repo root

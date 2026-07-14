@@ -1,7 +1,7 @@
 ##############################################################################################
 # Molecular Evolution  - Bioinformatic IV Course from Coursera
 #
-# Week 1 - Neighbor Joining Algorithm
+# Week 2 - Neighbor Joining Algorithm
 # Code Challenge: Implement NeighborJoining.
 #
 # Input: An integer n, followed by an n x n distance matrix.

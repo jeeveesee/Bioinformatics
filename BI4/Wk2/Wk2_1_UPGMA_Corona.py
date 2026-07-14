@@ -1,7 +1,7 @@
 ##############################################################################################
 # Molecular Evolution  - Bioinformatic IV Course from Coursera
 #
-# Week 1 - UPGMA (which stands for Unweighted Pair Group Method with Arithmetic Mean)
+# Week 2 - UPGMA (which stands for Unweighted Pair Group Method with Arithmetic Mean)
 # Code Challenge: Implement UPGMA.
 #
 # Testing UPGMA with Coronavirus (non-additive)!! 
